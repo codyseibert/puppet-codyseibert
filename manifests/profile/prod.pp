@@ -44,6 +44,12 @@ class codyseibert::profile::prod (
     }
   }
 
+  if defined (Apache::Vhost['other.setter.rocks']) == false {
+    apache::vhost { 'other.setter.rocks':
+      docroot => '/var/www/html/other',
+    }
+  }
+
   if defined (Host['test.setter.rocks']) == false {
     host { 'test.setter.rocks':
       ip => '159.203.90.68',
@@ -52,6 +58,12 @@ class codyseibert::profile::prod (
 
   if defined (Host['typr.setter.rocks']) == false {
     host { 'typr.setter.rocks':
+      ip => '159.203.90.68',
+    }
+  }
+
+  if defined (Host['other.setter.rocks']) == false {
+    host { 'other.setter.rocks':
       ip => '159.203.90.68',
     }
   }
