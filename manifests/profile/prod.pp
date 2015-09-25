@@ -25,15 +25,34 @@ class codyseibert::profile::prod (
     }
   }
 
+  if defined (Package['vim']) == false {
+    package { 'vim':
+      ensure => "latest",
+      provider => 'yum',
+    }
+  }
+
   if defined (Apache::Vhost['typr.setter.rocks']) == false {
     apache::vhost { 'typr.setter.rocks':
-      docroot => '/var/www/html/typr'
+      docroot => '/var/www/html/typr',
     }
   }
 
   if defined (Apache::Vhost['test.setter.rocks']) == false {
     apache::vhost { 'test.setter.rocks':
-      docroot => '/var/www/html/test'
+      docroot => '/var/www/html/test',
+    }
+  }
+
+  if defined (Host['test.setter.rocks']) == false {
+    host { 'test.setter.rocks':
+      ip => '159.203.90.68',
+    }
+  }
+
+  if defined (Host['typr.setter.rocks']) == false {
+    host { 'typr.setter.rocks':
+      ip => '159.203.90.68',
     }
   }
 
