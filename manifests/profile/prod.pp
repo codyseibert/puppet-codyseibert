@@ -27,7 +27,7 @@ class codyseibert::profile::prod (
 
   if defined (Package['createrepo']) == false {
     package { 'createrepo':
-      enable => 'latest',
+      ensure => 'latest',
       provider => 'yum',
     }
   }
