@@ -41,10 +41,10 @@ class codyseibert::profile::prod (
     }
   }
 
-  if defined (Package['typr']) == false {
-    package { 'typr':
-      ensure => 'latest',
-      provider => 'yum',
-    }
-  }
+  # if defined (Package['typr']) == false {
+  #   package { 'typr':
+  #     ensure => 'latest',
+  #     provider => 'yum',
+  #   }
+  # }
 }
