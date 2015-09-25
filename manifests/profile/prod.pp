@@ -7,7 +7,7 @@ class codyseibert::profile::prod (
     enabled => 1,
     mirrorlist => absent,
     repo_gpgcheck => 0,
-    baseurl => 'http://localhost:10000',
+    baseurl => 'http://localhost/repo',
     ensure => present,
     http_caching => 'none',
     metadata_expire => 1
