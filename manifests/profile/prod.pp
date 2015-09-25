@@ -7,7 +7,7 @@ class codyseibert::profile::prod (
     enabled => 1,
     mirrorlist => absent,
     repo_gpgcheck => 0,
-    baseurl => 'http://localhost/repo',
+    baseurl => 'http://104.131.253.44/repo',
     ensure => present,
     http_caching => 'none',
     metadata_expire => 1
@@ -22,22 +22,6 @@ class codyseibert::profile::prod (
       enable => true,
       ensure => "running",
       require => Class['apache'],
-    }
-  }
-
-  if defined (Package['createrepo']) == false {
-    package { 'createrepo':
-      ensure => 'latest',
-      provider => 'yum',
-    }
-  }
-
-  if defined (Chron['repo']) == false {
-    cron { 'repo':
-      command => "/usr/sbin/createrepo /var/www/html/repo",
-      user    => root,
-      hour    => 0,
-      minute  => 5
     }
   }
 
