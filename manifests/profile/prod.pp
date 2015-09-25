@@ -25,6 +25,18 @@ class codyseibert::profile::prod (
     }
   }
 
+  if defined (Apache::Vhost['typr.setter.rocks']) == false
+    apache::vhost { 'typr.setter.rocks':
+      docroot => '/var/www/html/typr'
+    }
+  }
+
+  if defined (Apache::Vhost['test.setter.rocks']) == false
+    apache::vhost { 'test.setter.rocks':
+      docroot => '/var/www/html/test'
+    }
+  }
+
   # if defined (Package['typr']) == false {
   #   package { 'typr':
   #     ensure => 'latest',
