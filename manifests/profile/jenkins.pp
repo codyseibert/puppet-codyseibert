@@ -5,7 +5,6 @@ class codyseibert::profile::jenkins (
     exec { 'wget':
       command => 'wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo',
       path => '/usr/bin',
-      user => root,
     }
   }
 
@@ -14,7 +13,6 @@ class codyseibert::profile::jenkins (
       command => 'rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key',
       path => '/usr/bin',
       require => Exec['wget'],
-      user => root,
     }
   }
 
