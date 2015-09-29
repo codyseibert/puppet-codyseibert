@@ -1,16 +1,24 @@
 class codyseibert::profile::jenkins (
 ) {
 
-  if defined (Exec['wget']) == false {
-    exec { 'wget':
-      command => 'wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo',
-      path => '/usr/bin',
-    }
-  }
+  # if defined (Class['jenkins']) == false {
+  #   class { 'jenkins':
+  #     executors => 0,
+  #   }
+  # }
+  #
+  # jenkins::plugin { 'git': }
 
   if defined (Exec['firewall']) == false {
     exec { 'firewall':
       command => 'firewall-cmd --zone=public --add-port=8080/tcp --permanent',
+      path => '/usr/bin',
+    }
+  }
+
+  if defined (Exec['wget']) == false {
+    exec { 'wget':
+      command => 'wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo',
       path => '/usr/bin',
     }
   }

@@ -25,43 +25,6 @@ class codyseibert::profile::prod (
     }
   }
 
-  # if defined (Package['vim']) == false {
-  #   package { 'vim':
-  #     ensure => "latest",
-  #     provider => 'yum',
-  #   }
-  # }
-
-  if defined (Package['epel-release']) == false {
-    package { 'epel-release':
-      ensure => "latest",
-      provider => 'yum',
-    }
-  }
-
-  if defined (Package['nodejs']) == false {
-    package { 'nodejs':
-      ensure => "latest",
-      provider => 'yum',
-      require => Package['epel-release'],
-    }
-  }
-
-  if defined (Package['npm']) == false {
-    package { 'npm':
-      ensure => "latest",
-      provider => 'yum',
-      require => Package['nodejs'],
-    }
-  }
-
-  if defined (Package['rpm-build']) == false {
-    package { 'rpm-build':
-      ensure => "latest",
-      provider => 'yum',
-    }
-  }
-
   if defined (Exec['gulp']) == false {
     exec { 'gulp':
       command => 'npm install -g gulp',
@@ -70,46 +33,22 @@ class codyseibert::profile::prod (
     }
   }
 
-  if defined (Apache::Vhost['typr.setter.rocks']) == false {
-    apache::vhost { 'typr.setter.rocks':
+  if defined (Apache::Vhost['chords.setter.rocks']) == false {
+    apache::vhost { 'chords.setter.rocks':
       docroot => '/var/www/html/typr',
     }
   }
 
-  if defined (Apache::Vhost['test.setter.rocks']) == false {
-    apache::vhost { 'test.setter.rocks':
-      docroot => '/var/www/html/test',
-    }
-  }
-
-  if defined (Apache::Vhost['other.setter.rocks']) == false {
-    apache::vhost { 'other.setter.rocks':
-      docroot => '/var/www/html/other',
-    }
-  }
-
-  if defined (Host['test.setter.rocks']) == false {
-    host { 'test.setter.rocks':
+  if defined (Host['chords.setter.rocks']) == false {
+    host { 'chords.setter.rocks':
       ip => '159.203.90.68',
     }
   }
 
-  if defined (Host['typr.setter.rocks']) == false {
-    host { 'typr.setter.rocks':
-      ip => '159.203.90.68',
+  if defined (Package['chords']) == false {
+    package { 'chords':
+      ensure => 'latest',
+      provider => 'yum',
     }
   }
-
-  if defined (Host['other.setter.rocks']) == false {
-    host { 'other.setter.rocks':
-      ip => '159.203.90.68',
-    }
-  }
-
-  # if defined (Package['typr']) == false {
-  #   package { 'typr':
-  #     ensure => 'latest',
-  #     provider => 'yum',
-  #   }
-  # }
 }
