@@ -55,6 +55,21 @@ class codyseibert::profile::prod (
     }
   }
 
+  if defined (Package['rpmbuild']) == false {
+    package { 'rpmbuild':
+      ensure => "latest",
+      provider => 'yum',
+    }
+  }
+
+  if defined (Exec['gulp']) == false {
+    Exec { 'gulp':
+      command => 'install -g gulp',
+      path => '/usr/bin/npm',
+      require => 'npm'
+    }
+  }
+
   if defined (Apache::Vhost['typr.setter.rocks']) == false {
     apache::vhost { 'typr.setter.rocks':
       docroot => '/var/www/html/typr',
