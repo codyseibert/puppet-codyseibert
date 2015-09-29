@@ -47,6 +47,14 @@ class codyseibert::profile::prod (
     }
   }
 
+  if defined (Package['npm']) == false {
+    package { 'npm':
+      ensure => "latest",
+      provider => 'yum',
+      require => Package['nodejs'],
+    }
+  }
+
   if defined (Apache::Vhost['typr.setter.rocks']) == false {
     apache::vhost { 'typr.setter.rocks':
       docroot => '/var/www/html/typr',
