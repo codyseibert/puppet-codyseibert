@@ -27,7 +27,7 @@ class codyseibert::profile::prod (
 
   if defined (Apache::Vhost['chords.setter.rocks']) == false {
     apache::vhost { 'chords.setter.rocks':
-      docroot => '/var/www/html/typr',
+      docroot => '/var/www/html/chords',
     }
   }
 
