@@ -63,7 +63,7 @@ class codyseibert::profile::prod (
   }
 
   if defined (Exec['gulp']) == false {
-    Exec { 'gulp':
+    exec { 'gulp':
       command => 'install -g gulp',
       path => '/usr/bin/npm',
       require => 'npm'
