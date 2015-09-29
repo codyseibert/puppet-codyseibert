@@ -25,12 +25,12 @@ class codyseibert::profile::prod (
     }
   }
 
-  if defined (Package['vim']) == false {
-    package { 'vim':
-      ensure => "latest",
-      provider => 'yum',
-    }
-  }
+  # if defined (Package['vim']) == false {
+  #   package { 'vim':
+  #     ensure => "latest",
+  #     provider => 'yum',
+  #   }
+  # }
 
   if defined (Package['epel-release']) == false {
     package { 'epel-release':
@@ -64,8 +64,8 @@ class codyseibert::profile::prod (
 
   if defined (Exec['gulp']) == false {
     exec { 'gulp':
-      command => 'install -g gulp',
-      path => '/usr/bin/npm',
+      command => 'npm install -g gulp',
+      path => '/usr/bin',
       require => Package['npm']
     }
   }
