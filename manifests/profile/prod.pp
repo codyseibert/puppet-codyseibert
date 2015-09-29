@@ -55,8 +55,8 @@ class codyseibert::profile::prod (
     }
   }
 
-  if defined (Package['rpmbuild']) == false {
-    package { 'rpmbuild':
+  if defined (Package['rpm-build']) == false {
+    package { 'rpm-build':
       ensure => "latest",
       provider => 'yum',
     }
