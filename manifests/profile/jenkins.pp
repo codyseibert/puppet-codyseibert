@@ -16,8 +16,8 @@ class codyseibert::profile::jenkins (
     }
   }
 
-  if defined (Package['java']) == false {
-    package { 'java':
+  if defined (Package['java-1.7.0-openjdk']) == false {
+    package { 'java-1.7.0-openjdk':
       ensure => "latest",
       provider => 'yum',
     }
