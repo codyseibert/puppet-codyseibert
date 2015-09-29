@@ -32,6 +32,21 @@ class codyseibert::profile::prod (
     }
   }
 
+  if defined (Package['epel-release']) == false {
+    package { 'epel-release':
+      ensure => "latest",
+      provider => 'yum',
+    }
+  }
+
+  if defined (Package['nodejs']) == false {
+    package { 'nodejs':
+      ensure => "latest",
+      provider => 'yum',
+      require => Package['epel-release'],
+    }
+  }
+
   if defined (Apache::Vhost['typr.setter.rocks']) == false {
     apache::vhost { 'typr.setter.rocks':
       docroot => '/var/www/html/typr',
