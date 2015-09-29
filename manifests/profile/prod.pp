@@ -25,14 +25,6 @@ class codyseibert::profile::prod (
     }
   }
 
-  if defined (Exec['gulp']) == false {
-    exec { 'gulp':
-      command => 'npm install -g gulp',
-      path => '/usr/bin',
-      require => Package['npm']
-    }
-  }
-
   if defined (Apache::Vhost['chords.setter.rocks']) == false {
     apache::vhost { 'chords.setter.rocks':
       docroot => '/var/www/html/typr',
