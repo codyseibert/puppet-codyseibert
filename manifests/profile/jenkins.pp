@@ -8,11 +8,10 @@ class codyseibert::profile::jenkins (
     }
   }
 
-  if defined (Exec['rpm']) == false {
-    exec { 'rpm':
-      command => 'rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key',
+  if defined (Exec['firewall']) == false {
+    exec { 'firewall':
+      command => 'firewall-cmd --zone=public --add-port=8080/tcp --permanent',
       path => '/usr/bin',
-      require => Exec['wget'],
     }
   }
 
