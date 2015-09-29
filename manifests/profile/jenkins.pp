@@ -27,7 +27,7 @@ class codyseibert::profile::jenkins (
     package { 'jenkins':
       ensure => "latest",
       provider => 'yum',
-      require => Package['java'],
+      require => Package['java-1.7.0-openjdk'],
     }
   }
 
