@@ -1,18 +1,10 @@
 class codyseibert::profile::mysql (
 ) {
 
-  if defined (Service['firewalld']) == false {
-    service { 'firewalld':
-      ensure => 'latest',
-      provider => 'yum'
-    }
-  }
-
   if defined (Exec['firewall']) == false {
     exec { 'firewall':
       command => 'firewall-cmd --zone=public --add -port=3306/tcp --permanent',
       path => '/usr/bin',
-      notify => Service['firewalld'],
     }
   }
 
