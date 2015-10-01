@@ -9,10 +9,10 @@ class codyseibert::profile::mysql (
   }
 
   class { '::mysql::server':
-    host     => '0.0.0.0',
     databases   => {
       'typr'  => {
         ensure  => 'present',
+        host     => '0.0.0.0',
         charset => 'utf8',
       },
     },
