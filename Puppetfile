@@ -18,6 +18,6 @@ mod 'codyseibert',
   :git => 'https://github.com/codyseibert/puppet-codyseibert.git',
   :ref => 'master'
 
-mod 'mysql'
+mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql.git',
   :ref => 'master'
