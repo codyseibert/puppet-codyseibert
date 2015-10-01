@@ -31,7 +31,7 @@ class codyseibert::profile::mysql (
         max_queries_per_hour     => '0',
         max_updates_per_hour     => '0',
         max_user_connections     => '0',
-        password_hash            => '*F3A2A51A9B0F2BE2468926B4132313728C250DBF',
+        password_hash            => '098f6bcd4621d373cade4e832627b4f6',
       }
     }
   }
