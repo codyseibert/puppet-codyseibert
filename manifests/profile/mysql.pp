@@ -3,8 +3,9 @@ class codyseibert::profile::mysql (
 
   if defined (Exec['firewall']) == false {
     exec { 'firewall':
-      command => 'firewall-cmd --zone=public --add-port=3306/tcp --permanent',
+      command => 'firewall-cmd --zone=public --add -port=3306/tcp --permanent',
       path => '/usr/bin',
+      notify => Service['firewalld'],
     }
   }
 
