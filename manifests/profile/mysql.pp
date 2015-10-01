@@ -12,7 +12,6 @@ class codyseibert::profile::mysql (
     databases   => {
       'typr'  => {
         ensure  => 'present',
-        host     => '0.0.0.0',
         charset => 'utf8',
       },
     },
