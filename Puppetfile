@@ -12,7 +12,7 @@ mod 'concat',
 
 mod 'jenkins',
   :git => 'https://github.com/jenkinsci/puppet-jenkins.git',
-  :ref = 'master'
+  :ref => 'master'
 
 mod 'codyseibert',
   :git => 'https://github.com/codyseibert/puppet-codyseibert.git',
