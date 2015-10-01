@@ -8,7 +8,7 @@ class codyseibert::profile::mysql (
     }
   }
 
-  mysql::server { 'typr':
+  class { '::mysql::server':
     host     => '0.0.0.0',
     databases   => {
       'typr'  => {
