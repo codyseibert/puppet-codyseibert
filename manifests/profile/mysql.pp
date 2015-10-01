@@ -15,7 +15,7 @@ class codyseibert::profile::mysql (
         ensure  => 'present',
         charset => 'utf8',
       },
-    }
+    },
     grants => {
       'typr@%/typr.*' => {
         ensure     => 'present',
@@ -24,7 +24,7 @@ class codyseibert::profile::mysql (
         table      => 'typr.*',
         user       => 'typr@%',
       },
-    }
+    },
     users => {
       'typr@%' => {
         ensure                   => 'present',
