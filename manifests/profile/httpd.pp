@@ -23,7 +23,7 @@ class codyseibert::profile::httpd (
   include apache::mod::proxy_http
   include apache::mod::deflate
 
-  $filters => [
+  $filters = [
     'FilterDeclare   COMPRESS',
     'FilterProvider  COMPRESS DEFLATE resp=Content-Type $text/html application/json',
     'FilterChain     COMPRESS',
