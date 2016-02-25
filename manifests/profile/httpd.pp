@@ -31,8 +31,8 @@ class codyseibert::profile::httpd (
     'FilterProvider  COMPRESS DEFLATE resp=Content-Type $application/json',
     'FilterProvider  COMPRESS DEFLATE resp=Content-Type $application/javascript',
     'FilterProvider  COMPRESS DEFLATE resp=Content-Type $image/svg+xml',
-    'FilterChain     COMPRESS'
-    'FilterProtocol  COMPRESS DEFLATE change=yes;byteranges=no'
+    'FilterChain     COMPRESS',
+    'FilterProtocol  COMPRESS DEFLATE change=yes;byteranges=no',
   ]
 
   # VHOST CLIENT FILE SECTION
