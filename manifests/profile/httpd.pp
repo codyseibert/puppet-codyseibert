@@ -25,9 +25,13 @@ class codyseibert::profile::httpd (
 
   $filters = [
     'FilterDeclare   COMPRESS',
-    'FilterProvider  COMPRESS DEFLATE resp=Content-Type $text/html application/json',
+    'FilterProvider  COMPRESS DEFLATE resp=Content-Type text/html',
     'FilterChain     COMPRESS',
-    'FilterProtocol  COMPRESS DEFLATE change=yes;byteranges=no',
+    'FilterProvider  COMPRESS DEFLATE resp=Content-Type text/css',
+    'FilterChain     COMPRESS',
+    'FilterProvider  COMPRESS DEFLATE resp=Content-Type application/json',
+    'FilterChain     COMPRESS',
+    'FilterProvider  COMPRESS DEFLATE resp=Content-Type application/javascript',
   ]
 
   # VHOST CLIENT FILE SECTION
