@@ -25,12 +25,12 @@ class codyseibert::profile::httpd (
 
   $filters = [
     'FilterDeclare   COMPRESS',
-    "FilterProvider  COMPRESS DEFLATE \"%{Content-Type} = 'text/html'\"",
-    "FilterProvider  COMPRESS DEFLATE \"%{Content-Type} = 'text/css'\"",
-    "FilterProvider  COMPRESS DEFLATE \"%{Content-Type} = 'text/plain'\"",
-    "FilterProvider  COMPRESS DEFLATE \"%{Content-Type} = 'application/json'\"",
-    "FilterProvider  COMPRESS DEFLATE \"%{Content-Type} = 'application/javascript'\"",
-    "FilterProvider  COMPRESS DEFLATE \"%{Content-Type} = 'image/svg+xml'\"",
+    "FilterProvider  COMPRESS DEFLATE \"%{Content_Type} = 'text/html'\"",
+    "FilterProvider  COMPRESS DEFLATE \"%{Content_Type} = 'text/css'\"",
+    "FilterProvider  COMPRESS DEFLATE \"%{Content_Type} = 'text/plain'\"",
+    "FilterProvider  COMPRESS DEFLATE \"%{Content_Type} = 'application/json'\"",
+    "FilterProvider  COMPRESS DEFLATE \"%{Content_Type} = 'application/javascript'\"",
+    "FilterProvider  COMPRESS DEFLATE \"%{Content_Type} = 'image/svg+xml'\"",
     'FilterChain     COMPRESS',
     'FilterProtocol  COMPRESS DEFLATE change=yes;byteranges=no',
   ]
