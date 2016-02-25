@@ -1,6 +1,14 @@
 class codyseibert::profile::httpd (
 ) {
 
+  if defined (Firewall['100 http(s) access']) == false {
+    firewall { '100 http(s) access':
+      dport   => [80, 443],
+      proto  => tcp,
+      action => accept,
+    }
+  }
+
   if defined(Class['apache']) == false {
     class { 'apache':
       default_vhost => false,

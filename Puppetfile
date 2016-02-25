@@ -21,3 +21,7 @@ mod 'codyseibert',
 mod 'mysql',
   :git => 'https://github.com/puppetlabs/puppetlabs-mysql.git',
   :ref => 'master'
+
+mod 'firewall',
+  :git => 'https://github.com/puppetlabs/puppetlabs-firewall.git',
+  :ref => 'master'
