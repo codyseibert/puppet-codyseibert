@@ -1,3 +1,4 @@
 class codyseibert::role::prod {
-  include codyseibert::profile::prod
+  include codyseibert::profile::mysql
+  include codyseibert::profile::httpd
 }

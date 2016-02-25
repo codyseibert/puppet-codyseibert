@@ -13,7 +13,7 @@ class codyseibert::profile::mysql (
     #   mysqld => { bind-address => '0.0.0.0'}
     # },
     databases   => {
-      'typer'  => {
+      'typr'  => {
         ensure  => 'present',
         charset => 'utf8',
       },
@@ -25,7 +25,7 @@ class codyseibert::profile::mysql (
         ensure  => 'present',
         charset => 'utf8',
       },
-      'pingr'  => {
+      'stethoscope'  => {
         ensure  => 'present',
         charset => 'utf8',
       },
@@ -35,12 +35,12 @@ class codyseibert::profile::mysql (
       }
     },
     grants => {
-      'typer@localhost/typer.*' => {
+      'typr@localhost/typr.*' => {
         ensure     => 'present',
         options    => ['GRANT'],
         privileges => ['SELECT', 'INSERT', 'UPDATE', 'DELETE'],
-        table      => 'typer.*',
-        user       => 'typer@%',
+        table      => 'typr.*',
+        user       => 'typr@%',
       },
       'linkr@localhost/linkr.*' => {
         ensure     => 'present',
@@ -56,12 +56,12 @@ class codyseibert::profile::mysql (
         table      => 'snipr.*',
         user       => 'snipr@localhost',
       },
-      'pingr@localhost/pingr.*' => {
+      'stethoscope@localhost/stethoscope.*' => {
         ensure     => 'present',
         options    => ['GRANT'],
         privileges => ['SELECT', 'INSERT', 'UPDATE', 'DELETE'],
-        table      => 'pingr.*',
-        user       => 'pingr@localhost',
+        table      => 'stethoscope.*',
+        user       => 'stethoscope@localhost',
       },
       'setter@localhost/setter.*' => {
         ensure     => 'present',
@@ -72,7 +72,7 @@ class codyseibert::profile::mysql (
       }
     },
     users => {
-      'typer@localhost' => {
+      'typr@localhost' => {
         ensure                   => 'present',
         max_connections_per_hour => '0',
         max_queries_per_hour     => '0',
@@ -96,7 +96,7 @@ class codyseibert::profile::mysql (
         max_user_connections     => '0',
         password_hash            => '*59BE3DD02FF954CBA5344A3B25DAE39880BC793F',
       },
-      'pingr@localhost' => {
+      'stethoscope@localhost' => {
         ensure                   => 'present',
         max_connections_per_hour => '0',
         max_queries_per_hour     => '0',
