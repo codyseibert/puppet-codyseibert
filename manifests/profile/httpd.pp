@@ -18,9 +18,17 @@ class codyseibert::profile::httpd (
 
   include apache::mod::dir
   include apache::mod::headers
+  include apache::mod::filter
   include apache::mod::proxy
   include apache::mod::proxy_http
   include apache::mod::deflate
+
+  $filters => [
+    'FilterDeclare   COMPRESS',
+    'FilterProvider  COMPRESS DEFLATE resp=Content-Type $text/html application/json',
+    'FilterChain     COMPRESS',
+    'FilterProtocol  COMPRESS DEFLATE change=yes;byteranges=no',
+  ]
 
   # VHOST CLIENT FILE SECTION
   if defined(Apache::Vhost['typr.codyseibert.com']) == false {
@@ -36,7 +44,7 @@ class codyseibert::profile::httpd (
           'url' => "http://localhost:9000/"
         }
       ],
-      set_output_filter => 'DEFLATE'
+      filters => $filters
     }
   }
 
@@ -53,7 +61,7 @@ class codyseibert::profile::httpd (
           'url' => "http://localhost:9001/"
         }
       ],
-      set_output_filter => 'DEFLATE'
+      filters => $filters
     }
   }
 
@@ -70,7 +78,7 @@ class codyseibert::profile::httpd (
           'url' => "http://localhost:9002/"
         }
       ],
-      set_output_filter => 'DEFLATE'
+      filters => $filters
     }
   }
 
@@ -87,7 +95,7 @@ class codyseibert::profile::httpd (
           'url' => "http://localhost:9003/"
         }
       ],
-      set_output_filter => 'DEFLATE'
+      filters => $filters
     }
   }
 
@@ -104,7 +112,7 @@ class codyseibert::profile::httpd (
           'url' => "http://localhost:9004/"
         }
       ],
-      set_output_filter => 'DEFLATE'
+      filters => $filters
     }
   }
 
