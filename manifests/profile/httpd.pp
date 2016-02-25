@@ -35,6 +35,15 @@ class codyseibert::profile::httpd (
     'FilterProtocol  COMPRESS DEFLATE change=yes;byteranges=no',
   ]
 
+  if defined(Apache::Vhost['rpms.codyseibert.com']) == false {
+    apache::vhost { 'rpms.codyseibert.com':
+      docroot    => "/home/rpms",
+      serveraliases => ['rpms.codyseibert.com'],
+      port => 80,
+      vhost_name => '*'
+    }
+  }
+
   # VHOST CLIENT FILE SECTION
   if defined(Apache::Vhost['typr.codyseibert.com']) == false {
     apache::vhost { 'typr.codyseibert.com':
