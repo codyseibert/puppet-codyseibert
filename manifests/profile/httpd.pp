@@ -52,6 +52,12 @@ class codyseibert::profile::httpd (
       port => 80,
       vhost_name => '*',
       directoryindex => 'index.html',
+      proxy_pass => [
+        {
+          'path' => '/',
+          'url' => "http://localhost:2368/"
+        }
+      ],
       filters => $filters
     }
   }
