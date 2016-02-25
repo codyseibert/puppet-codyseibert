@@ -40,7 +40,7 @@ class codyseibert::profile::mysql (
         options    => ['GRANT'],
         privileges => ['SELECT', 'INSERT', 'UPDATE', 'DELETE'],
         table      => 'typr.*',
-        user       => 'typr@%',
+        user       => 'typr@localhost',
       },
       'linkr@localhost/linkr.*' => {
         ensure     => 'present',
