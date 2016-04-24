@@ -35,16 +35,6 @@ class codyseibert::profile::httpd (
     'FilterProtocol  COMPRESS DEFLATE change=yes;byteranges=no',
   ]
 
-  # VHOST CLIENT FILE SECTION
-  if defined(Apache::Vhost['rpms.codyseibert.com']) == false {
-    apache::vhost { 'rpms.codyseibert.com':
-      docroot    => "/home/rpms",
-      serveraliases => ['rpms.codyseibert.com'],
-      port => 80,
-      vhost_name => '*'
-    }
-  }
-
   if defined(Apache::Vhost['codyseibert.com']) == false {
     apache::vhost { 'codyseibert.com':
       docroot    => "/home/ghost",
@@ -62,90 +52,23 @@ class codyseibert::profile::httpd (
     }
   }
 
-  if defined(Apache::Vhost['typr.codyseibert.com']) == false {
-    apache::vhost { 'typr.codyseibert.com':
-      docroot    => "/home/typr/client",
-      serveraliases => ['typr.codyseibert.com'],
+  if defined(Apache::Vhost['seibertsoftwaresolutions.com']) == false {
+    apache::vhost { 'seibertsoftwaresolutions.com':
+      docroot    => "/var/www/html/seibertsoftwaresolutions",
+      serveraliases => ['www.seibertsoftwaresolutions.com'],
       port => 80,
       vhost_name => '*',
       directoryindex => 'index.html',
       proxy_pass => [
         {
-          'path' => '/api',
-          'url' => "http://localhost:9000/"
+          'path' => '/mailer',
+          'url' => "http://localhost:3000"
         }
       ],
-      filters => $filters
+      filters => $filters,
     }
   }
 
-  if defined(Apache::Vhost['snipr.codyseibert.com']) == false {
-    apache::vhost { 'snipr.codyseibert.com':
-      docroot    => "/home/snipr/client",
-      serveraliases => ['snipr.codyseibert.com'],
-      port => 80,
-      vhost_name => '*',
-      directoryindex => 'index.html',
-      proxy_pass => [
-        {
-          'path' => '/api',
-          'url' => "http://localhost:9001/"
-        }
-      ],
-      filters => $filters
-    }
-  }
-
-  if defined(Apache::Vhost['linkr.codyseibert.com']) == false {
-    apache::vhost { 'linkr.codyseibert.com':
-      docroot    => "/home/linkr/client",
-      serveraliases => ['linkr.codyseibert.com'],
-      port => 80,
-      vhost_name => '*',
-      directoryindex => 'index.html',
-      proxy_pass => [
-        {
-          'path' => '/api',
-          'url' => "http://localhost:9002/"
-        }
-      ],
-      filters => $filters
-    }
-  }
-
-  if defined(Apache::Vhost['stethoscope.codyseibert.com']) == false {
-    apache::vhost { 'stethoscope.codyseibert.com':
-      docroot    => "/home/stethoscope/client",
-      serveraliases => ['stethoscope.codyseibert.com'],
-      port => 80,
-      vhost_name => '*',
-      directoryindex => 'index.html',
-      proxy_pass => [
-        {
-          'path' => '/api',
-          'url' => "http://localhost:9003/"
-        }
-      ],
-      filters => $filters
-    }
-  }
-
-  if defined(Apache::Vhost['setter.rocks']) == false {
-    apache::vhost { 'setter.rocks':
-      docroot    => "/home/setter/client",
-      serveraliases => ['www.setter.rocks'],
-      port => 80,
-      vhost_name => '*',
-      directoryindex => 'index.html',
-      proxy_pass => [
-        {
-          'path' => '/api',
-          'url' => "http://localhost:9004/"
-        }
-      ],
-      filters => $filters
-    }
-  }
 
   if defined(Selboolean['httpd_can_network_connect']) == false {
     selboolean { 'httpd_can_network_connect':
